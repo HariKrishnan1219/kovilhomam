@@ -128,6 +128,7 @@ class _HomamFormState extends State<HomamForm> {
   DateTime dateOfBirth = DateTime.now();
   TimeOfDay timeOfBirth = TimeOfDay(hour: 7, minute: 15);
   String _prayer = 'Business development. Excel in education.';
+  List<S2Choice<String>> nakshathram = [];
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   final nameTextController = TextEditingController();
@@ -136,6 +137,55 @@ class _HomamFormState extends State<HomamForm> {
   final addressController = TextEditingController();
   final pincodeController = TextEditingController();
 
+  void FindNakshathram() async
+  {
+    if(_rasi == 'Mesham')
+      nakshathram = [S2Choice<String>(value: 'Asvini', title: 'Asvini'.tr()),
+        S2Choice<String>(value: 'Bharani', title: 'Bharani'.tr()),S2Choice<String>(value: 'Krttika', title: 'Krttika'.tr())];
+    else if(_rasi == 'Rishabam')
+      nakshathram = [S2Choice<String>(value: 'Krttika', title: 'Krttika'.tr()),
+     S2Choice<String>(value: 'Rohini', title: 'Rohini'.tr()),S2Choice<String>(value: 'Mrgasirsa', title: 'Mrgasirsa'.tr())];
+    else if(_rasi == 'Mithunam')
+      nakshathram = [S2Choice<String>(value: 'Mrgasirsa', title: 'Mrgasirsa'.tr()),
+        S2Choice<String>(value: 'Thirvathirai', title: 'Thirvathirai'.tr()),
+        S2Choice<String>(value: 'Punarpusam', title: 'Punarpusam'.tr()),
+        ];
+    else if(_rasi == 'Kadakam')
+      nakshathram = [S2Choice<String>(value: 'Punarpusam', title: 'Punarpusam'.tr()),
+        S2Choice<String>(value: 'Pusam', title: 'Pusam'.tr()),
+        S2Choice<String>(value: 'Ayilyam', title: 'Ayilyam'.tr()),];
+    else if(_rasi == 'Simham')
+      nakshathram = [S2Choice<String>(value: 'Magham', title: 'Magham'.tr()),
+        S2Choice<String>(value: 'Puram', title: 'Puram'.tr()),S2Choice<String>(value: 'Uttaram', title: 'Uttaram'.tr()),];
+    else if(_rasi == 'Kanni')
+      nakshathram = [S2Choice<String>(value: 'Uttaram', title: 'Uttaram'.tr()),
+        S2Choice<String>(value: 'Hastam', title: 'Hastam'.tr()),
+        S2Choice<String>(value: 'Chitrai', title: 'Chitrai'.tr()),];
+    else if(_rasi == 'Thulam')
+      nakshathram = [S2Choice<String>(value: 'Chitrai', title: 'Chitrai'.tr()),
+        S2Choice<String>(value: 'Svati', title: 'Svati'.tr()),
+        S2Choice<String>(value: 'Vishakha', title: 'Vishakha'.tr()),];
+    else if(_rasi == 'Viruchikam')
+      nakshathram = [ S2Choice<String>(value: 'Vishakha', title: 'Vishakha'.tr()),
+        S2Choice<String>(value: 'Anusham', title: 'Anusham'.tr()),
+        S2Choice<String>(value: 'Jyestha', title: 'Jyestha'.tr()),];
+    else if(_rasi == 'Thanusu')
+      nakshathram = [ S2Choice<String>(value: 'Mulam', title: 'Mulam'.tr()),
+        S2Choice<String>(value: 'Puradam', title: 'Puradam'.tr()),
+        S2Choice<String>(value: 'Uttaratadam', title: 'Uttaratadam'.tr()),];
+    else if(_rasi == 'Makaram')
+      nakshathram = [S2Choice<String>(value: 'Uttaratadam', title: 'Uttaratadam'.tr()),
+        S2Choice<String>(value: 'Thiruvonam', title: 'Thiruvonam'.tr()),
+        S2Choice<String>(value: 'Avitam', title: 'Avitam'.tr()),];
+    else if(_rasi == 'Kumbam')
+      nakshathram = [S2Choice<String>(value: 'Avitam', title: 'Avitam'.tr()),
+        S2Choice<String>(value: 'sathyam', title: 'sathyam'.tr()),
+        S2Choice<String>(value: 'Puratathi', title: 'Puratathi'.tr()),];
+    else if(_rasi == 'Meenam')
+      nakshathram = [S2Choice<String>(value: 'Puratathi', title: 'Puratathi'.tr()),
+        S2Choice<String>(value: 'Uttratathi', title: 'Uttratathi'.tr()),
+        S2Choice<String>(value: 'Revati', title: 'Revati'.tr()),];
+  }
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -311,51 +361,7 @@ class _HomamFormState extends State<HomamForm> {
           },
         ),
         //const Divider(indent: 20),
-        SmartSelect<String>.single(
-          title: 'Birth Nakshatra'.tr(),
-          value: _nakshatra,
-          choiceItems: [
-            S2Choice<String>(value: 'Asvini', title: 'Asvini'.tr()),
-            S2Choice<String>(value: 'Bharani', title: 'Bharani'.tr()),
-            S2Choice<String>(value: 'Krttika', title: 'Krttika'.tr()),
-            S2Choice<String>(value: 'Rohini', title: 'Rohini'.tr()),
-            S2Choice<String>(value: 'Mrgasirsa', title: 'Mrgasirsa'.tr()),
-            S2Choice<String>(value: 'Thirvathirai', title: 'Thirvathirai'.tr()),
-            S2Choice<String>(value: 'Punarpusam', title: 'Punarpusam'.tr()),
-            S2Choice<String>(value: 'Pusam', title: 'Pusam'.tr()),
-            S2Choice<String>(value: 'Ayilyam', title: 'Ayilyam'.tr()),
-            S2Choice<String>(value: 'Magham', title: 'Magham'.tr()),
-            S2Choice<String>(value: 'Puram', title: 'Puram'.tr()),
-            S2Choice<String>(value: 'Uttaram', title: 'Uttaram'.tr()),
-            S2Choice<String>(value: 'Hastam', title: 'Hastam'.tr()),
-            S2Choice<String>(value: 'Chitrai', title: 'Chitrai'.tr()),
-            S2Choice<String>(value: 'Svati', title: 'Svati'.tr()),
-            S2Choice<String>(value: 'Vishakha', title: 'Vishakha'.tr()),
-            S2Choice<String>(value: 'Anusham', title: 'Anusham'.tr()),
-            S2Choice<String>(value: 'Jyestha', title: 'Jyestha'.tr()),
-            S2Choice<String>(value: 'Mulam', title: 'Mulam'.tr()),
-            S2Choice<String>(value: 'Puradam', title: 'Puradam'.tr()),
-            S2Choice<String>(value: 'Uttaratadam', title: 'Uttaratadam'.tr()),
-            S2Choice<String>(value: 'Thiruvonam', title: 'Thiruvonam'.tr()),
-            S2Choice<String>(value: 'Avitam', title: 'Avitam'.tr()),
-            S2Choice<String>(value: 'sathyam', title: 'sathyam'.tr()),
-            S2Choice<String>(value: 'Puratathi', title: 'Puratathi'.tr()),
-            S2Choice<String>(value: 'Uttratathi', title: 'Uttratathi'.tr()),
-            S2Choice<String>(value: 'Revati', title: 'Revati'.tr()),
-          ],
-          onChange: (state) => setState(() => _nakshatra = state.value),
-          modalType: S2ModalType.bottomSheet,
-          modalFilter: true,
-          tileBuilder: (context, state) {
-            return S2Tile.fromState(
-              state,
-              isTwoLine: true,
-              //leading: const CircleAvatar(
-              //backgroundImage: NetworkImage('https://source.unsplash.com/xsGxhtAsfSA/100x100'),
-              //),
-            );
-          },
-        ),
+
         SmartSelect<String>.single(
           title: 'Birth Rasi'.tr(),
           value: _rasi,
@@ -373,7 +379,10 @@ class _HomamFormState extends State<HomamForm> {
             S2Choice<String>(value: 'Kumbam', title: 'Kumbam'.tr()),
             S2Choice<String>(value: 'Meenam', title: 'Meenam'.tr()),
           ],
-          onChange: (state) => setState(() => _rasi = state.value),
+          onChange: (state) => setState(() {
+            _rasi = state.value;
+            FindNakshathram();
+          }),
           modalType: S2ModalType.bottomSheet,
           modalFilter: true,
           tileBuilder: (context, state) {
@@ -386,6 +395,53 @@ class _HomamFormState extends State<HomamForm> {
             );
           },
         ),
+
+    SmartSelect<String>.single(
+    title: 'Birth Nakshatra'.tr(),
+    value: _nakshatra,
+    choiceItems: nakshathram,
+    // [
+    //   S2Choice<String>(value: 'Asvini', title: 'Asvini'.tr()),
+    //   S2Choice<String>(value: 'Bharani', title: 'Bharani'.tr()),
+    //   S2Choice<String>(value: 'Krttika', title: 'Krttika'.tr()),
+    //   S2Choice<String>(value: 'Rohini', title: 'Rohini'.tr()),
+    //   S2Choice<String>(value: 'Mrgasirsa', title: 'Mrgasirsa'.tr()),
+    //   S2Choice<String>(value: 'Thirvathirai', title: 'Thirvathirai'.tr()),
+    //   S2Choice<String>(value: 'Punarpusam', title: 'Punarpusam'.tr()),
+    //   S2Choice<String>(value: 'Pusam', title: 'Pusam'.tr()),
+    //   S2Choice<String>(value: 'Ayilyam', title: 'Ayilyam'.tr()),
+    //   S2Choice<String>(value: 'Magham', title: 'Magham'.tr()),
+    //   S2Choice<String>(value: 'Puram', title: 'Puram'.tr()),
+    //   S2Choice<String>(value: 'Uttaram', title: 'Uttaram'.tr()),
+    //   S2Choice<String>(value: 'Hastam', title: 'Hastam'.tr()),
+    //   S2Choice<String>(value: 'Chitrai', title: 'Chitrai'.tr()),
+    //   S2Choice<String>(value: 'Svati', title: 'Svati'.tr()),
+    //   S2Choice<String>(value: 'Vishakha', title: 'Vishakha'.tr()),
+    //   S2Choice<String>(value: 'Anusham', title: 'Anusham'.tr()),
+    //   S2Choice<String>(value: 'Jyestha', title: 'Jyestha'.tr()),
+    //   S2Choice<String>(value: 'Mulam', title: 'Mulam'.tr()),
+    //   S2Choice<String>(value: 'Puradam', title: 'Puradam'.tr()),
+    //   S2Choice<String>(value: 'Uttaratadam', title: 'Uttaratadam'.tr()),
+    //   S2Choice<String>(value: 'Thiruvonam', title: 'Thiruvonam'.tr()),
+    //   S2Choice<String>(value: 'Avitam', title: 'Avitam'.tr()),
+    //   S2Choice<String>(value: 'sathyam', title: 'sathyam'.tr()),
+    //   S2Choice<String>(value: 'Puratathi', title: 'Puratathi'.tr()),
+    //   S2Choice<String>(value: 'Uttratathi', title: 'Uttratathi'.tr()),
+    //   S2Choice<String>(value: 'Revati', title: 'Revati'.tr()),
+    // ],
+    onChange: (state) => setState(() => _nakshatra = state.value),
+    modalType: S2ModalType.bottomSheet,
+    modalFilter: true,
+    tileBuilder: (context, state) {
+    return S2Tile.fromState(
+    state,
+    isTwoLine: true,
+    //leading: const CircleAvatar(
+    //backgroundImage: NetworkImage('https://source.unsplash.com/xsGxhtAsfSA/100x100'),
+    //),
+    );
+    },
+    ),
         Padding(padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
             child: TextField(
               style: TextStyle(color: Color.fromRGBO(31, 58, 47, 1.0)),
